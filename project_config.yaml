@@ -1,0 +1,49 @@
+# Django Project Configuration
+project_name: my_first_project
+app_name: my_app
+debug: true
+allowed_hosts:
+  - localhost
+  - 127.0.0.1
+
+# Database Configuration
+database:
+  engine: postgresql
+  name: mydatabase
+  user: user
+  host: localhost
+  port: 5432
+
+# Model Definitions
+models:
+  User:
+    fields:
+      username:
+        type: CharField
+        options:
+          max_length: 150
+          unique: true
+      email:
+        type: EmailField
+        options:
+          unique: true
+      is_active:
+        type: BooleanField
+        options:
+          default: true
+  
+  Profile:
+    fields:
+      user:
+        type: OneToOneField
+        options:
+          to: User
+          on_delete: CASCADE
+      bio:
+        type: TextField
+        options:
+          blank: true
+      created_at:
+        type: DateTimeField
+        options:
+          auto_now_add: true
