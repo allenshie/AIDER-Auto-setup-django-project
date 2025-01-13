@@ -1,0 +1,1 @@
+# AIDER-Auto-setup-django-project
